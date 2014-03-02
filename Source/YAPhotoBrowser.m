@@ -114,7 +114,6 @@
 
 - (void)_prepareForClosePhotoBrowser
 {
-  [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
   [[[[UIApplication sharedApplication] delegate] window] removeGestureRecognizer:_panGesture];
   _autoHide = NO;
   [NSObject cancelPreviousPerformRequestsWithTarget:self]; // Cancel any pending toggles from taps
@@ -183,20 +182,11 @@
 {
   [super viewWillAppear:animated];
   [self _displayPages];
-
-  [[UIApplication sharedApplication] setStatusBarHidden:YES
-                                          withAnimation:(animated
-                                                         ? UIStatusBarAnimationFade
-                                                         : UIStatusBarAnimationNone)];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
   [super viewWillDisappear:animated];
-  [[UIApplication sharedApplication] setStatusBarHidden:NO
-                                          withAnimation:(animated
-                                                         ? UIStatusBarAnimationFade
-                                                         : UIStatusBarAnimationNone)];
 }
 
 - (void)viewWillLayoutSubviews
